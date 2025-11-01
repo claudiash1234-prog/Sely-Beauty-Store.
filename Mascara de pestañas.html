@@ -1,0 +1,176 @@
+<html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>MASCARA DE PESTAÑAS</title>
+ 
+<H1><span style="color:brown;">🌸 ¡Resalta tu mirada!</h1></span style="color:brown;">
+<p>Nuestra nueva máscara de pestañas “Mirada de Ensueño” alargada de volumen y define cada pestaña desde la primera pasada. </p>
+<p>💫Porque unos ojos bonitos dicen más que mil palabras,
+pruébala hoy y descubre tu nueva mirada favorita.</p>
+
+ <p>Con pestañas Grandes y coquetas</p>
+
+<img src="MAS.jpg" width="250" height="200">
+<img src="MS.jpg" width="250" height="200">
+<img src="MSS.jpg" width="250" height="200">
+ 
+<a href="sely beauty store.html">sely beauty store</a> |
+          <meta charset="UTF-8"><center>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        /* Botón de Like */
+        .like-button {
+            background-color: #eee;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .liked {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        /* Comentarios */
+        #comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .delete-comment {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 2px 5px;
+        }
+
+        /* Formulario para comentar */
+        #commentForm {
+            margin-top: 20px;
+        }
+
+        #commentForm input {
+            padding: 8px;
+            width: 70%;
+            font-size: 14px;
+        }
+
+        #commentForm button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .counters {
+            margin-top: 10px;
+            font-weight: bold;</center>
+        }
+    </style>
+</head>
+<body>
+   
+
+    <!-- Botón de Like con contador -->
+    <button id="likeBtn" class="like-button">👍 Me gusta</button>
+    <div class="counters">Likes: <span id="likeCount">0</span></div>
+
+    <!-- Sección de comentarios -->
+    <div id="comments"></div>
+    <div class="counters">Comentarios: <span id="commentCount">0</span></div>
+
+    <!-- Formulario para agregar comentario -->
+    <div id="commentForm">
+        <input type="text" id="commentInput" placeholder="Escribe tu comentario...">
+        <button id="addComment">Comentar</button>
+    </div>
+
+    <script>
+        // Contador de Likes
+        let likes = 0;
+        const likeBtn = document.getElementById('likeBtn');
+        const likeCount = document.getElementById('likeCount');
+
+        likeBtn.addEventListener('click', () => {
+            if(likeBtn.classList.contains('liked')){
+                likes--; // Quitar like
+                likeBtn.classList.remove('liked');
+                likeBtn.textContent = "👍 Me gusta";
+            } else {
+                likes++; // Dar like
+                likeBtn.classList.add('liked');
+                likeBtn.textContent = "👍 Te gusta";
+            }
+            likeCount.textContent = likes;
+        });
+
+        // Contador de comentarios
+        let commentCountValue = 0;
+        const commentInput = document.getElementById('commentInput');
+        const addCommentBtn = document.getElementById('addComment');
+        const commentsDiv = document.getElementById('comments');
+        const commentCount = document.getElementById('commentCount');
+
+        function updateCommentCount() {
+            commentCountValue = commentsDiv.childElementCount;
+            commentCount.textContent = commentCountValue;
+        }
+
+        // Agregar comentario
+        addCommentBtn.addEventListener('click', () => {
+            const text = commentInput.value.trim();
+            if(text !== ''){
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.textContent = text;
+
+                // Botón para eliminar comentario
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-comment';
+                deleteBtn.textContent = 'X';
+                deleteBtn.addEventListener('click', () => {
+                    commentsDiv.removeChild(commentDiv);
+                    updateCommentCount();
+                });
+
+                commentDiv.appendChild(deleteBtn);
+                commentsDiv.appendChild(commentDiv);
+                commentInput.value = ''; // Limpiar input
+                updateCommentCount();
+            } else {
+                alert("Escribe algo para comentar");
+            }
+        });
+
+        // Permitir presionar Enter para comentar
+        commentInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter'){
+                addCommentBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>     
+</body>
+</html>
